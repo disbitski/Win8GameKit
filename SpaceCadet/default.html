@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>SpaceCadet</title>
+
+       <!-- WinJS References -->
+    <link href="//Microsoft.WinJS.1.0.RC/css/ui-dark.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.1.0.RC/js/base.js"></script>
+    <script src="//Microsoft.WinJS.1.0.RC/js/ui.js"></script>
+
+    <!-- App References -->
+    <link href="/css/default.css" rel="stylesheet">
+    <link href="/css/space.css" rel="stylesheet"/>
+    <script src="/js/default.js"></script>
+    <script src="/js/sound.js"></script>
+    <script src="/js/ship.js"></script>
+    <script src="/js/starField.js"></script>
+
+</head>
+<body style="background-image: url('/images/starfield.jpg');">
+
+<div id="divGame">
+        <div id="txtScore">Score: 0</div>    
+        <div id="txtLevel">Level: 0</div>
+        <div id="divPlayer">
+             <div id="txtPlayerName">Player1</div>
+             <img id="imgPlayer" src="/images/helmet.png" />
+         </div>
+<div>  
+<div id="divMenu">
+        <img id="imgMenu" src="/images/menutitle.png" />
+       
+        <div id="txtVersion"></div>
+        <button id="btnStart">PLAY</button>
+ <div>
+<div id="txtNewLevel"></div>
+
+<div id="divRoot" data-win-control="WinJS.UI.ViewBox">
+    <canvas id="canvas" ></canvas>
+</div>
+
+
+ <div id="AppBar" data-win-control="WinJS.UI.AppBar" data-win-options="">
+        <button id="cmdHome" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{id:'cmdHome',label:'Menu',icon:'home',section:'selection',tooltip:'Menu'}">
+        </button>
+       <button id="cmdCamera" data-win-control ="WinJS.UI.AppBarCommand" data-win-options="{id:'cmdCamera',label:'Cadet Photo',icon:'camera',section:'global',tooltip:'Change Cadet Photo'}">
+        </button>
+      <button id="cmdName" data-win-control ="WinJS.UI.AppBarCommand" data-win-options="{id:'cmdName',label:'Cadet Name',icon:'url(images/accept.png)',section:'global',tooltip:'Change Cadet Name',type:'flyout',flyout:'nameFlyout'}">
+        </button>
+ </div>
+ 
+ <div id="nameFlyout" data-win-control="WinJS.UI.Flyout">
+    <div>
+    <p>
+        <label>Cadet Name<br />
+        </label>
+        <input type="text" id="cadetName" />                    
+    </p>
+    </div>
+    <button id="submitButton">Save</button>
+</div>
+
+    
+</body>
+</html>

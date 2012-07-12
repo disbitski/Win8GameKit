@@ -1,0 +1,60 @@
+﻿html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    -ms-box-align: middle;
+    -ms-box-orient: vertical;
+    -ms-box-pack: center;
+    display: -ms-box;
+}
+
+.fixedlayout {
+    -ms-grid-columns: 1fr;
+    -ms-grid-rows: 1fr;
+    display: -ms-grid;
+    height: 768px;
+    width: 1024px;
+}
+
+@media screen and (-ms-view-state: fullscreen-landscape) {
+}
+
+@media screen and (-ms-view-state: filled) {
+}
+
+@media screen and (-ms-view-state: snapped) {
+    #imgMenu {
+        -ms-transform: translate(0px, 0px) rotate(0deg) scale(0.50);
+    }
+    
+    #btnStart {
+        -ms-transform: translate(0px, 0px) rotate(0deg) scale(0.60);
+    }
+    
+    #txtNewLevel {
+        -ms-transform: translate(0px, 0px) rotate(0deg) scale(0.30);
+    }
+
+    #imgPlayer {
+        opacity: 0;
+    }
+
+    #txtLevel {
+        -ms-transform: translate(-120px, 0px) rotate(0deg) scale(0.30);
+    }
+
+    #txtPlayerName {
+        -ms-transform: translate(70px, 0px) rotate(0deg) scale(0.30);
+    }
+
+    #txtScore {
+        -ms-transform: translate(0px, 0px) rotate(0deg) scale(0.30);
+    }
+      
+}
+
+@media screen and (-ms-view-state: fullscreen-portrait) {
+}
