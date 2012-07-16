@@ -8,7 +8,7 @@ Web: http://about.met/davedev
 
 Summary:
 
-Space Cadet is a Windows 8 Metro Style App developed using HTML5 and JavaScript. The intent of this code is to help HTML5/JavaScript developers with writing their first Metro Style App in a fun, immersive way. The code for the game is intended for demo purposes only and shoul dbe considered a starting kit for future apps you may write.  The game includes a functional game loop as well as the following technologies:
+Space Cadet is a Windows 8 Metro Style App developed using HTML5 and JavaScript. The intent of this code is to help HTML5/JavaScript developers with writing their first Metro Style App in a fun, immersive way. The code for the game is intended for demo purposes only and should be considered a starting kit for future apps you may write.  The game includes a functional game loop as well as the following technologies:
 
 HTML5 Canvas
 HTML5 Audio
