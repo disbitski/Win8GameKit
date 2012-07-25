@@ -4,7 +4,7 @@ Author: Dave Isbitski
 Git: http://github.com/disbitski
 Twitter: http://twitter.com/TheDaveDev
 Blog: http://blogs.msdn.com/davedev
-Web: http://about.met/davedev
+Web: http://about.me/davedev
 
 Summary:
 
