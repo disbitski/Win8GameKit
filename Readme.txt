@@ -1,4 +1,4 @@
-Metro Game Kit
+Metro Game Kit 1.00 (Windows 8 RTM Release)
 
 Author: Dave Isbitski 
 Git: http://github.com/disbitski

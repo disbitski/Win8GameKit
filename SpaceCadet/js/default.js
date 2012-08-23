@@ -3,7 +3,7 @@
 /// <reference path="starField.js" />
 
 // Title: Space Cadet
-// Version 1.0
+// Version 1.0 Windows 8 RTM
 // Desc: Fun Space Game to demonstrate Win8 Metro Style App using HTML5 Canvas, CSS3, 
 //       Accelerometer, Camera, Touch, and Trial APIs
 //
@@ -13,7 +13,7 @@
 //
 // Contact: david.isbitski@microsoft.com, twitter.com/thedavedev, blogs.msdn.com/davedev, github.com/disbitski, slideshare.net/disbitski
 //
-// Last Mod: 6/7/12
+// Last Mod: 8/23/2012
 //
 // Special Thanks To:
 //                      Mark Hindsbo - Developer of starField.js which is used in the Menu Screen
@@ -27,19 +27,20 @@
 (function () {
     "use strict";
 
+    WinJS.Binding.optimizeBindingReferences = true;
+
     var app = WinJS.Application;
     var activation = Windows.ApplicationModel.Activation;
-    WinJS.strictProcessing();
 
     //Version
-    var GAME_VERSION = "1.00";
+    var GAME_VERSION = "1.00 RTM";
 
     //ship and screen constants
     var POINTS_SHIPHIT = 100;
     var SNAPPED_VIEW = 320;
     var SCREEN_WIDTH = 1366;
     var SCREEN_HEIGHT = 768;
-    var FULLSCREEN_WIDTH = 1366; //To fix current CP bug
+    var FULLSCREEN_WIDTH = 1366;
     var SHIP_WIDTH = 190;
     var SHIP_HEIGHT = 100;
     var MAX_ACCEL = 17;
@@ -51,7 +52,7 @@
     var LEVEL_RENDER_FRAMES = 10;
     var LEVEL_PTS_REQ = 2000;
     var LEVEL_SPEED_INCREASE = 0.1;
-    var GRAVITY_WAVE_PTS_REQ = 1500; //1000 for rest, 4000 real gameplay
+    var GRAVITY_WAVE_PTS_REQ = 1000; //1000 for rest, 4000 real gameplay
 
 
     //initial player score
@@ -61,7 +62,7 @@
     //canvas and context
     var canvas;
     var ctx;
-    
+
     //camera
     var capturedPhoto;
 
@@ -69,7 +70,7 @@
     var accelerometer;
     var intervalId = 0;
     var getReadingInterval = 0;
-   
+
     //ships
     var ships = new Array(MAX_SHIPS);
 
@@ -114,8 +115,8 @@
     var lvlCurrent = 0;
     var lvlNextPts = LEVEL_PTS_REQ;
     var lvlDifficulty = LEVEL_SPEED_INCREASE;
-    
-    
+
+
     app.onactivated = function (args) {
         if (args.detail.kind === activation.ActivationKind.launch) {
             if (args.detail.previousExecutionState !== activation.ApplicationExecutionState.terminated) {
@@ -128,7 +129,8 @@
             args.setPromise(WinJS.UI.processAll());
         }
     };
-   
+
+
     function gravityWave() {
         //playSound("gravitywave");
         for (var i = 0; i < MAX_SHIPS; i++) {
@@ -138,12 +140,12 @@
 
     //Accelerometer has been shaken and now we need to grant the bonus power
     function onShakenAccel(event) {
-         //Stop Listening to Accelerometer
+        //Stop Listening to Accelerometer
         accelerometer.removeEventListener("shaken", onShakenAccel);
 
         //Gravity Wave Power - Destory all ships
         gravityWave();
-       
+
     }
 
     //Init Accelerometer
@@ -155,9 +157,9 @@
             var reportInterval = minimumReportInterval > 16 ? minimumReportInterval : 16;
             accelerometer.reportInterval = reportInterval;
             getReadingInterval = reportInterval * 2; // double the interval for display (to reduce CPU usage)
-            
+
         } else {
-           displayError("No accelerometer found");
+            displayError("No accelerometer found");
         }
     }
 
@@ -205,14 +207,14 @@
         stars = new StarField(ctx, 500, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, "z", -0.2);
 
         //Init Sounds
-       SoundJS.addBatch([
-		{ name: "redalert", src: "../sounds/redalert.mp3", instances: 1 },
-		{ name: "newlevel", src: "../sounds/newlevel.mp3", instances: 1 },
-        { name: "pulse", src: "../sounds/pulse.mp3", instances: 1 },
-        { name: "laser1", src: "../sounds/laser1.mp3", instances: 1 },
-        { name: "laser2", src: "../sounds/laser2.mp3", instances: 1 },
-        { name: "laser3", src: "../sounds/laser3.mp3", instances: 1 }]);
-    
+        SoundJS.addBatch([
+         { name: "redalert", src: "../sounds/redalert.mp3", instances: 1 },
+         { name: "newlevel", src: "../sounds/newlevel.mp3", instances: 1 },
+         { name: "pulse", src: "../sounds/pulse.mp3", instances: 1 },
+         { name: "laser1", src: "../sounds/laser1.mp3", instances: 1 },
+         { name: "laser2", src: "../sounds/laser2.mp3", instances: 1 },
+         { name: "laser3", src: "../sounds/laser3.mp3", instances: 1 }]);
+
 
         //Handle Touch
         canvas.addEventListener("MSPointerUp", touchHandler, false);
@@ -267,7 +269,7 @@
         //Set boundries to be one ship size
         MAX_X = canvas.width - (SHIP_WIDTH + 20);
         MAX_Y = canvas.height - (SHIP_HEIGHT + 50);
-        
+
 
         var menuX, btnX, btnY;
         menuX = (SCREEN_WIDTH - imgMenu.width) / 2;
@@ -283,13 +285,13 @@
 
         musicGame.pause();
         musicMenu.play();
-     
+
     }
 
     //Set up Game Screen UI Elements
     function startGame(event) {
-        txtPlayerName.style.visibility="visible";
-        txtScore.style.visibility="visible";
+        txtPlayerName.style.visibility = "visible";
+        txtScore.style.visibility = "visible";
         imgPlayer.style.visibility = "visible";
         imgMenu.style.visibility = "hidden";
         btnStart.style.visibility = "hidden";
@@ -303,7 +305,7 @@
         musicGame.play();
 
         menuEnabled = false;
-        
+
     }
 
     //AppBar Camera Icon Event Handler
@@ -342,7 +344,7 @@
 
     //Save state of current x position
     function applicationStateCheckpoint() {
-       //TODO: Save State
+        //TODO: Save State
     }
 
     //Verify if point was within the bounds of an actual ship
@@ -360,7 +362,7 @@
         var r = randomAccel(0, 2);
         var laserSound = lasers[r];
         SoundJS.play(laserSound, SoundJS.INTERRUPT_ANY);
-       
+
         //TODO: Animation Explosion and better sound
         var explosion = new Image();
         explosion.onload = function () {
@@ -371,7 +373,7 @@
         ship.destroyed = true;
 
         updateScore(POINTS_SHIPHIT);
- 
+
         return ship;
     }
 
@@ -395,7 +397,7 @@
         else {
             return false;
         }
-        
+
     }
 
     //update player score
@@ -406,10 +408,12 @@
         txtScore.innerHTML = "  Score: " + score;
 
         if (scoreGravity === GRAVITY_WAVE_PTS_REQ) {
-            accelerometer.addEventListener("shaken", onShakenAccel);
-            txtScore.innerHTML = " > SHAKE THAT SCREEN <";
+            if (accelerometer != null && accelerometer != undefined) {
+                accelerometer.addEventListener("shaken", onShakenAccel);
+                txtScore.innerHTML = " > SHAKE THAT SCREEN <";
+                SoundJS.play("pulse", SoundJS.INTERRUPT_ANY);
+            }
             scoreGravity = 0;
-            SoundJS.play("pulse", SoundJS.INTERRUPT_ANY);
         }
 
         //new level
@@ -419,7 +423,7 @@
             txtLevel.innerHTML = "Level: " + lvlCurrent;
             lvlDifficulty = LEVEL_SPEED_INCREASE * lvlCurrent;
 
-            SoundJS.play("newlevel",SoundJS.INTERUPT_ANY);
+            SoundJS.play("newlevel", SoundJS.INTERUPT_ANY);
 
         }
 
@@ -461,7 +465,7 @@
 
         //clear each frame
         ctx.clearRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-        
+
         //Render ships to canvas 
         for (var i = 0; i < MAX_SHIPS; i++) {
             ship = ships[i];
@@ -515,7 +519,7 @@
             displayError(err);
         }
     }
-    
+
     function displayError(err) {
         errorMsg = err;
     }
@@ -532,10 +536,22 @@
         } else if (newViewState === viewStates.fullScreenPortrait) {
             //Currently not supported
         }
-        
+
     }
 
     //If Document fully loaded than begin processing
     document.addEventListener("DOMContentLoaded", initialize, false);
 
+
+
+    //app.oncheckpoint = function (args) {
+    //    // TODO: This application is about to be suspended. Save any state
+    //    // that needs to persist across suspensions here. You might use the
+    //    // WinJS.Application.sessionState object, which is automatically
+    //    // saved and restored across suspension. If you need to complete an
+    //    // asynchronous operation before your application is suspended, call
+    //    // args.setPromise().
+    //};
+
+    //app.start();
 })();

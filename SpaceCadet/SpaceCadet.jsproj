@@ -35,7 +35,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>2666f999-f568-44a2-a589-ca5c477d0b33</ProjectGuid>
+    <ProjectGuid>ee017c39-8a16-433b-9ad7-e2c9d02b676f</ProjectGuid>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '11.0'">
+    <VisualStudioVersion>11.0</VisualStudioVersion>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).Default.props" />
@@ -66,12 +69,11 @@
     <Content Include="images\splashscreen.png" />
     <Content Include="images\starfield.jpg" />
     <Content Include="images\storelogo.png" />
-    <Content Include="css\default.css" />
     <Content Include="js\default.js" />
+    <Content Include="css\default.css" />
     <Content Include="js\ship.js" />
     <Content Include="js\sound.js" />
     <Content Include="js\starField.js" />
-    <Content Include="page.html" />
     <Content Include="sounds\hydrogen.mp3" />
     <Content Include="sounds\laser1.mp3" />
     <Content Include="sounds\laser2.mp3" />
@@ -82,14 +84,18 @@
     <None Include="SpaceCadet_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <SDKReference Include="Microsoft.WinJS.1.0.RC, Version=1.0" />
+    <SDKReference Include="Microsoft.WinJS.1.0, Version=1.0" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below then uncomment
+       that target and the DisableFastUpToDateCheck PropertyGroup. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
   <Target Name="AfterBuild">
   </Target>
+  <PropertyGroup>
+    <DisableFastUpToDateCheck>true</DisableFastUpToDateCheck>
+  </PropertyGroup>
   -->
 </Project>

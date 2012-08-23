@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
-  <Identity Name="2666f999-f568-44a2-a589-ca5c477d0b33" Version="1.0.0.0" Publisher="CN=David" />
+  <Identity Name="ee017c39-8a16-433b-9ad7-e2c9d02b676f" Version="1.0.0.0" Publisher="CN=davisbi" />
   <Properties>
     <DisplayName>SpaceCadet</DisplayName>
-    <PublisherDisplayName>David</PublisherDisplayName>
+    <PublisherDisplayName>davisbi</PublisherDisplayName>
     <Logo>images\storelogo.png</Logo>
   </Properties>
   <Prerequisites>
-    <OSMinVersion>6.2.0</OSMinVersion>
-    <OSMaxVersionTested>6.2.0</OSMaxVersionTested>
+    <OSMinVersion>6.2.1</OSMinVersion>
+    <OSMaxVersionTested>6.2.1</OSMaxVersionTested>
   </Prerequisites>
   <Resources>
     <Resource Language="x-generate" />
@@ -17,10 +17,9 @@
     <Application Id="App" StartPage="default.html">
       <VisualElements DisplayName="SpaceCadet" Logo="images\logo.png" SmallLogo="images\smalllogo.png" Description="SpaceCadet" ForegroundText="light" BackgroundColor="black">
         <DefaultTile ShowName="allLogos" />
-        <SplashScreen Image="images\splashscreen.png" BackgroundColor="black" />
+        <SplashScreen Image="images\splashscreen.png" />
         <InitialRotationPreference>
           <Rotation Preference="landscape" />
-          <Rotation Preference="landscapeFlipped" />
         </InitialRotationPreference>
       </VisualElements>
     </Application>
