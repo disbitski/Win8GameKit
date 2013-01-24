@@ -13,7 +13,7 @@
 //
 // Contact: david.isbitski@microsoft.com, twitter.com/thedavedev, blogs.msdn.com/davedev, github.com/disbitski, slideshare.net/disbitski
 //
-// Last Mod: 8/23/2012
+// Last Mod: 1/24/2013
 //
 // Special Thanks To:
 //                      Mark Hindsbo - Developer of starField.js which is used in the Menu Screen
@@ -94,14 +94,10 @@
     //Menu Music
     var musicPlaying = false;
     var musicMenu = new Audio("/sounds/hydrogen.mp3");
-    //var musicGame = new Audio("/sounds/crazy_comets.wav");
     var musicGame = new Audio("/sounds/hydrogen.mp3");
     musicMenu.loop = true;
-
-
     musicGame.loop = true;
-
-
+    
     //soundeffects
     var lasers = new Array();
     lasers[0] = "laser1";
@@ -116,7 +112,9 @@
     var lvlNextPts = LEVEL_PTS_REQ;
     var lvlDifficulty = LEVEL_SPEED_INCREASE;
 
-
+    //Share Text
+    var SHARE_TITLE = "Check out my Space Cadet score!";
+        
     app.onactivated = function (args) {
         if (args.detail.kind === activation.ActivationKind.launch) {
             if (args.detail.previousExecutionState !== activation.ApplicationExecutionState.terminated) {
@@ -227,6 +225,10 @@
         document.getElementById("submitButton").addEventListener("click", updateCadetName, false);
         //Menu Commands
         document.getElementById("btnStart").addEventListener("click", startGame, false);
+
+        //Share Contract
+        var dataTransferManager = Windows.ApplicationModel.DataTransfer.DataTransferManager.getForCurrentView();
+        dataTransferManager.addEventListener("datarequested", shareScore);
 
         //Game Menu
         showMenu();
@@ -539,9 +541,18 @@
 
     }
 
+    //Share Contract for High Score
+    function shareScore(e) {
+        var request = e.request;
+        var playername = document.getElementById("txtPlayerName");
+
+        request.data.properties.title = SHARE_TITLE;
+        request.data.setText('"' + playername.innerHTML + '" has reached ' + txtLevel.innerHTML + ' with' + txtScore.innerHTML + '!');
+
+    }
+    
     //If Document fully loaded than begin processing
     document.addEventListener("DOMContentLoaded", initialize, false);
-
 
 
     //app.oncheckpoint = function (args) {
