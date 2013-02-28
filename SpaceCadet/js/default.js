@@ -3,7 +3,7 @@
 /// <reference path="starField.js" />
 
 // Title: Space Cadet
-// Version 1.0 Windows 8 RTM
+// Version 1.1 Windows 8 RTM
 // Desc: Fun Space Game to demonstrate Win8 Metro Style App using HTML5 Canvas, CSS3, 
 //       Accelerometer, Camera, Touch, and Trial APIs
 //
@@ -33,7 +33,7 @@
     var activation = Windows.ApplicationModel.Activation;
 
     //Version
-    var GAME_VERSION = "1.00 RTM";
+    var GAME_VERSION = "1.1";
 
     //ship and screen constants
     var POINTS_SHIPHIT = 100;
@@ -229,6 +229,15 @@
         //Share Contract
         var dataTransferManager = Windows.ApplicationModel.DataTransfer.DataTransferManager.getForCurrentView();
         dataTransferManager.addEventListener("datarequested", shareScore);
+
+        //About and Privacy Policy Settings Charm
+        WinJS.Application.onsettings = function (e) {
+            e.detail.applicationcommands = {
+                "aboutSettings": { title: "About Space Cadet", href: "/html/about.html" },
+                "privacySettings": { title: "Privacy Policy", href: "/html/privacy.html" }
+            };
+            WinJS.UI.SettingsFlyout.populateSettings(e);
+        };
 
         //Game Menu
         showMenu();

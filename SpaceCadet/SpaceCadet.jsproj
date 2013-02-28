@@ -53,9 +53,12 @@
     <AppxManifest Include="package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <Content Include="css\settings.css" />
     <Content Include="css\space.css" />
     <Content Include="default.html" />
     <Content Include="fonts\FINALOLD.TTF" />
+    <Content Include="html\about.html" />
+    <Content Include="html\privacy.html" />
     <Content Include="images\accept.png" />
     <Content Include="images\explosion.png" />
     <Content Include="images\helmet.png" />
