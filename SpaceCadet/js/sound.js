@@ -1,4 +1,4 @@
-/**
+﻿/**
 * EaselJS
 * Visit http://easeljs.com/ for documentation, updates and examples.
 *
