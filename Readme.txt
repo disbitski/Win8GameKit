@@ -1,14 +1,15 @@
-Windows 8 Casual Game Kit 1.00 (Windows 8 RTM Release)
+Windows 8 Casual Game Kit 1.1 (Feb 2013)
 
 Author: Dave Isbitski 
 Git: http://github.com/disbitski
 Twitter: http://twitter.com/TheDaveDev
 Blog: http://blogs.msdn.com/davedev
 Web: http://about.me/davedev
+Lynda.com Course: http://bit.ly/lyndawin8games
 
 Summary:
 
-Space Cadet is a Windows 8 Metro Style App developed using HTML5 and JavaScript. The intent of this code is to help HTML5/JavaScript developers with writing their first Metro Style App in a fun, immersive way. The code for the game is intended for demo purposes only and should be considered a starting kit for future apps you may write.  The game includes a functional game loop as well as the following technologies:
+Space Cadet is a Windows Store Game developed using HTML5 and JavaScript. The intent of this code is to help HTML5/JavaScript developers with writing their first Windows Store App in a fun, immersive way. The code for the game is intended for demo purposes only and should be considered a starting kit for future apps you may write.  The game includes a functional game loop as well as the following technologies:
 
 HTML5 Canvas
 HTML5 Audio
